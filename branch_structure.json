@@ -1,0 +1,33 @@
+{
+  "default_branch": "main",
+  "branches": [
+    "abel",
+    "carlos",
+    "juana",
+    "juana2",
+    "main",
+    "matricula",
+    "matricula2",
+    "origin"
+  ],
+  "parent": {
+    "abel": "main",
+    "carlos": "main",
+    "juana": "main",
+    "juana2": "main",
+    "main": null,
+    "matricula": "main",
+    "matricula2": "main",
+    "origin": "main"
+  },
+  "order": [
+    "main",
+    "abel",
+    "carlos",
+    "juana",
+    "juana2",
+    "matricula",
+    "matricula2",
+    "origin"
+  ]
+}
