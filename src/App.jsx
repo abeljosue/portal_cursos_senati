@@ -1,8 +1,7 @@
+import { useState } from "react";
 import {
   Link,
-  NavLink,
   Navigate,
-  Outlet,
   Route,
   Routes,
   useLocation,
@@ -10,44 +9,9 @@ import {
   useParams,
   useSearchParams,
 } from "react-router";
+import CursoCard from "./components/CursoCard.jsx";
+import Layout from "./components/Layout.jsx";
 import cursos from "./data/cursos.js";
-
-const enlaceNavegacion = ({ isActive }) =>
-  isActive ? { fontWeight: "700" } : undefined;
-
-function Layout() {
-  return (
-    <div>
-      <header>
-        <nav aria-label="Navegación principal">
-          <Link to="/">
-            <strong>Portal de Cursos</strong>
-          </Link>{" "}
-          <NavLink to="/" end style={enlaceNavegacion}>
-            Inicio
-          </NavLink>{" "}
-          <NavLink to="/cursos" style={enlaceNavegacion}>
-            Cursos
-          </NavLink>{" "}
-          <NavLink to="/matricula" style={enlaceNavegacion}>
-            Matrícula
-          </NavLink>{" "}
-          <NavLink to="/contacto" style={enlaceNavegacion}>
-            Contacto
-          </NavLink>
-        </nav>
-      </header>
-
-      <main>
-        <Outlet />
-      </main>
-
-      <footer>
-        <small>Portal de Cursos</small>
-      </footer>
-    </div>
-  );
-}
 
 function Inicio() {
   const navigate = useNavigate();
@@ -64,6 +28,7 @@ function Inicio() {
 }
 
 function Cursos() {
+  const [favoritos, setFavoritos] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const consulta = searchParams.get("q") ?? "";
   const cursosFiltrados = cursos.filter((curso) => {
@@ -78,9 +43,19 @@ function Cursos() {
     setSearchParams(texto ? { q: texto } : {});
   };
 
+  const alternarFavorito = (id) => {
+    setFavoritos((actuales) =>
+      actuales.includes(id)
+        ? actuales.filter((favoritoId) => favoritoId !== id)
+        : [...actuales, id],
+    );
+  };
+
   return (
     <section>
       <h1>Catálogo de cursos</h1>
+
+      <p aria-live="polite">Favoritos: {favoritos.length}</p>
 
       <form onSubmit={buscar}>
         <label htmlFor="buscar-curso">Buscar curso</label>{" "}
@@ -93,14 +68,16 @@ function Cursos() {
         <button type="submit">Buscar</button>
       </form>
 
-      <ul>
+      <div>
         {cursosFiltrados.map((curso) => (
-          <li key={curso.id}>
-            <Link to={`/cursos/${curso.id}`}>{curso.nombre}</Link>
-            <span> - {curso.area}</span>
-          </li>
+          <CursoCard
+            key={curso.id}
+            curso={curso}
+            esFavorito={favoritos.includes(curso.id)}
+            onToggleFavorito={alternarFavorito}
+          />
         ))}
-      </ul>
+      </div>
 
       {cursosFiltrados.length === 0 && <p>No encontramos cursos.</p>}
     </section>
