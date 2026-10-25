@@ -1,4 +1,4 @@
-
+import "./Cursos.css";
 import { useState } from "react";
 import { useSearchParams } from "react-router";
 import cursos from "../data/cursos";
@@ -13,6 +13,8 @@ function Cursos() {
 
   // Guarda los IDs de los cursos marcados como favoritos.
   const [favoritos, setFavoritos] = useState([]);
+
+  const [filtroHoras, setFiltroHoras] = useState("");
 
   // Obtiene el texto de búsqueda desde la URL.
   // Si no existe el parámetro q, utiliza una cadena vacía.
@@ -33,8 +35,15 @@ function Cursos() {
     // Si no se seleccionó un área, muestra cursos de todas las áreas.
     const coincideArea = areaSeleccionada === "" || curso.area === areaSeleccionada;
 
-    // El curso debe cumplir ambos criterios.
-    return coincideBusqueda && coincideArea;
+    const horas = Number(curso.horas);
+
+    const coincideHoras =
+      filtroHoras === "" ||
+      (filtroHoras === "cortos" && horas <= 20) ||
+      (filtroHoras === "medios" && horas > 20 && horas <= 50) ||
+      (filtroHoras === "largos" && horas > 50);
+
+    return coincideBusqueda && coincideArea && coincideHoras;
   });
 
   // Actualiza el parámetro q cuando se envía el formulario.
@@ -59,7 +68,7 @@ function Cursos() {
   }
 
   return (
-    <main>
+    <main className="cursos-page">
       <h1>Catálogo de cursos</h1>
       <p>Encuentra el curso que mejor se adapte a tus intereses.</p>
 
@@ -81,6 +90,20 @@ function Cursos() {
               {area}
             </option>
           ))}
+        </select>
+      </div>
+
+      <div className="filtro-horas">
+        <label htmlFor="horas">Filtrar por duración</label>
+        <select
+          id="horas"
+          value={filtroHoras}
+          onChange={(event) => setFiltroHoras(event.target.value)}
+        >
+          <option value="">Todas las duraciones</option>
+          <option value="cortos">Hasta 20 horas</option>
+          <option value="medios">De 21 a 50 horas</option>
+          <option value="largos">Más de 50 horas</option>
         </select>
       </div>
 

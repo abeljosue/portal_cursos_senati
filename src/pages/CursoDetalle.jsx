@@ -1,4 +1,4 @@
-
+import "./CursoDetalle.css";
 import { Link, useNavigate, useParams } from "react-router";
 import cursos from "../data/cursos";
 

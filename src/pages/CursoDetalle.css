@@ -1,0 +1,450 @@
+main:has(.curso-detalle) {
+  --detalle-bg: #eef2ff;
+  --detalle-ink: #1e1b4b;
+  --detalle-muted: #475569;
+  --detalle-primary: #4f46e5;
+  --detalle-primary-dark: #3730a3;
+  --detalle-accent: #ea580c;
+  --detalle-border: #c7d2fe;
+  --detalle-card: #ffffff;
+
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 28px 24px 80px;
+  background:
+    radial-gradient(ellipse at top right, #e0e7ff 0%, transparent 42%),
+    var(--detalle-bg);
+  color: var(--detalle-ink);
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.curso-detalle {
+  box-sizing: border-box;
+  position: relative;
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: clamp(26px, 5vw, 58px);
+  overflow: hidden;
+  border: 1px solid var(--detalle-border);
+  border-radius: 28px;
+  background: var(--detalle-card);
+  box-shadow: 0 20px 50px rgb(30 27 75 / 8%);
+}
+
+.curso-detalle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 7px;
+  background: linear-gradient(
+    90deg,
+    var(--detalle-primary),
+    #818cf8,
+    var(--detalle-accent)
+  );
+}
+
+main:has(.curso-detalle) > button:first-child {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 44px;
+  margin: 0 auto 22px;
+  padding: 0 17px;
+  border: 1px solid var(--detalle-border);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--detalle-primary-dark);
+  font: inherit;
+  font-size: 14px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background 180ms ease, transform 180ms ease;
+}
+
+main:has(.curso-detalle) > button:first-child:hover {
+  transform: translateX(-3px);
+  background: #e0e7ff;
+}
+
+.curso-detalle > p:first-child {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0 22px;
+  padding: 9px 15px;
+  border: 1px solid #c7d2fe;
+  border-radius: 999px;
+  background: #eef2ff;
+  color: var(--detalle-primary-dark);
+  font-size: 12px;
+  font-weight: 900;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+}
+
+.curso-detalle > h1 {
+  max-width: 850px;
+  margin: 0 0 22px;
+  color: var(--detalle-ink);
+  font-size: clamp(34px, 5.5vw, 60px);
+  font-weight: 900;
+  letter-spacing: -0.055em;
+  line-height: 1.05;
+  overflow-wrap: anywhere;
+}
+
+.curso-detalle > p:nth-of-type(2) {
+  max-width: 800px;
+  margin: 0 0 36px;
+  color: var(--detalle-muted);
+  font-size: clamp(15px, 1.5vw, 17px);
+  line-height: 1.9;
+}
+
+.curso-detalle dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin: 0 0 46px;
+  padding: 0;
+}
+
+.curso-detalle dl > div {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 9px;
+  min-height: 135px;
+  padding: 25px;
+  overflow: hidden;
+  border: 1px solid var(--detalle-border);
+  border-radius: 20px;
+  background: linear-gradient(145deg, #f8faff, #eef2ff);
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.curso-detalle dl > div:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 24px rgb(79 70 229 / 10%);
+}
+
+.curso-detalle dl > div::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: var(--detalle-primary);
+}
+
+.curso-detalle dt {
+  color: var(--detalle-muted);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+}
+
+.curso-detalle dd {
+  margin: 0;
+  color: var(--detalle-primary-dark);
+  font-size: clamp(19px, 2.5vw, 25px);
+  font-weight: 900;
+  line-height: 1.3;
+  overflow-wrap: anywhere;
+}
+
+.curso-detalle section {
+  margin-top: 0;
+  padding-top: 36px;
+  border-top: 1px solid #e0e7ff;
+}
+
+.curso-detalle section h2 {
+  position: relative;
+  margin: 0 0 12px;
+  color: var(--detalle-ink);
+  font-size: clamp(25px, 3.5vw, 36px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1.2;
+}
+
+.curso-detalle section h2::after {
+  content: "";
+  display: block;
+  width: 55px;
+  height: 4px;
+  margin-top: 15px;
+  border-radius: 999px;
+  background: var(--detalle-accent);
+}
+
+.curso-detalle section ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 15px;
+  margin: 26px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.curso-detalle section li {
+  box-sizing: border-box;
+  display: flex;
+  align-items: flex-start;
+  gap: 13px;
+  min-width: 0;
+  padding: 19px;
+  border: 1px solid #e0e7ff;
+  border-radius: 16px;
+  background: #f8faff;
+  color: #334155;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+  transition:
+    border-color 180ms ease,
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.curso-detalle section li:hover {
+  transform: translateY(-2px);
+  border-color: #a5b4fc;
+  background: #eef2ff;
+}
+
+.curso-detalle section li::before {
+  content: "✓";
+  display: inline-grid;
+  flex: 0 0 28px;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border-radius: 10px;
+  background: #e0e7ff;
+  color: var(--detalle-primary-dark);
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.curso-detalle > button:not(:first-child) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  min-width: 220px;
+  min-height: 54px;
+  margin: 42px 0 0;
+  padding: 0 28px;
+  border: none;
+  border-radius: 13px;
+  background: var(--detalle-primary);
+  box-shadow: 0 10px 22px rgb(79 70 229 / 24%);
+  color: #fff;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 900;
+  cursor: pointer;
+  transition:
+    background 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.curso-detalle > button:not(:first-child):hover {
+  transform: translateY(-3px);
+  background: var(--detalle-primary-dark);
+  box-shadow: 0 15px 28px rgb(79 70 229 / 30%);
+}
+
+.curso-detalle > button:not(:first-child):active {
+  transform: translateY(0);
+}
+
+.curso-detalle > p:last-child {
+  margin: 27px 0 0;
+  padding-top: 23px;
+  border-top: 1px solid #e0e7ff;
+  color: var(--detalle-muted);
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.curso-detalle > p:last-child a {
+  color: var(--detalle-primary-dark);
+  font-weight: 800;
+  text-decoration: none;
+  text-underline-offset: 4px;
+}
+
+.curso-detalle > p:last-child a:hover {
+  color: var(--detalle-primary);
+  text-decoration: underline;
+}
+
+main:not(:has(.curso-detalle)):has(> button) {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 75vh;
+  padding: 50px 24px;
+  background: var(--detalle-bg, #eef2ff);
+  color: #1e1b4b;
+  font-family: "Segoe UI", Arial, sans-serif;
+  text-align: center;
+}
+
+main:not(:has(.curso-detalle)):has(> button) > h1 {
+  margin: 0 0 15px;
+  color: #1e1b4b;
+  font-size: clamp(30px, 5vw, 44px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+}
+
+main:not(:has(.curso-detalle)):has(> button) > p {
+  max-width: 500px;
+  color: #475569;
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+main:not(:has(.curso-detalle)):has(> button) > button {
+  min-height: 48px;
+  margin-top: 12px;
+  padding: 0 24px;
+  border: none;
+  border-radius: 12px;
+  background: #4f46e5;
+  color: white;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+main:not(:has(.curso-detalle)):has(> button) > button:hover {
+  background: #3730a3;
+}
+
+main:not(:has(.curso-detalle)):has(> button) > p a {
+  color: #3730a3;
+  font-weight: 800;
+}
+
+main:has(.curso-detalle) button:focus-visible,
+main:has(.curso-detalle) a:focus-visible,
+main:not(:has(.curso-detalle)):has(> button) button:focus-visible,
+main:not(:has(.curso-detalle)):has(> button) a:focus-visible {
+  outline: 3px solid #ea580c;
+  outline-offset: 4px;
+}
+
+@media (max-width: 760px) {
+  main:has(.curso-detalle) {
+    padding: 24px 18px 56px;
+  }
+
+  .curso-detalle {
+    border-radius: 22px;
+  }
+
+  .curso-detalle section ul {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .curso-detalle section li {
+    padding: 17px;
+  }
+}
+
+@media (max-width: 520px) {
+  main:has(.curso-detalle) {
+    padding: 18px 12px 42px;
+  }
+
+  main:has(.curso-detalle) > button:first-child {
+    margin-bottom: 16px;
+  }
+
+  .curso-detalle {
+    padding: 27px 19px;
+    border-radius: 18px;
+  }
+
+  .curso-detalle > p:first-child {
+    margin-bottom: 17px;
+    font-size: 11px;
+  }
+
+  .curso-detalle > h1 {
+    font-size: clamp(29px, 9vw, 40px);
+  }
+
+  .curso-detalle > p:nth-of-type(2) {
+    margin-bottom: 27px;
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .curso-detalle dl {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 12px;
+    margin-bottom: 34px;
+  }
+
+  .curso-detalle dl > div {
+    min-height: 105px;
+    padding: 20px;
+    border-radius: 15px;
+  }
+
+  .curso-detalle section {
+    padding-top: 29px;
+  }
+
+  .curso-detalle section h2 {
+    font-size: 27px;
+  }
+
+  .curso-detalle section ul {
+    gap: 11px;
+    margin-top: 22px;
+  }
+
+  .curso-detalle section li {
+    gap: 10px;
+    padding: 15px;
+    font-size: 13px;
+  }
+
+  .curso-detalle > button:not(:first-child) {
+    width: 100%;
+    min-width: 0;
+    margin-top: 30px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .curso-detalle *,
+  main:has(.curso-detalle) > button:first-child {
+    scroll-behavior: auto;
+    transition: none;
+  }
+
+  .curso-detalle button:hover,
+  .curso-detalle section li:hover,
+  .curso-detalle dl > div:hover,
+  main:has(.curso-detalle) > button:first-child:hover {
+    transform: none;
+  }
+}
