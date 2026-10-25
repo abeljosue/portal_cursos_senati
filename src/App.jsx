@@ -5,27 +5,13 @@ import {
   Route,
   Routes,
   useLocation,
-  useNavigate,
   useParams,
   useSearchParams,
 } from "react-router";
 import CursoCard from "./components/CursoCard.jsx";
 import Layout from "./components/Layout.jsx";
 import cursos from "./data/cursos.js";
-
-function Inicio() {
-  const navigate = useNavigate();
-
-  return (
-    <section>
-      <h1>Portal de Cursos</h1>
-      <p>Encuentra el curso técnico que necesitas y matricúlate en línea.</p>
-      <button type="button" onClick={() => navigate("/cursos")}>
-        Ver cursos
-      </button>
-    </section>
-  );
-}
+import Inicio from "./pages/Inicio.jsx";
 
 function Cursos() {
   const [favoritos, setFavoritos] = useState([]);
