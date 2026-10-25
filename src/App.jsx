@@ -1,122 +1,215 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import {
+  Link,
+  NavLink,
+  Navigate,
+  Outlet,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+  useParams,
+  useSearchParams,
+} from "react-router";
+import cursos from "./data/cursos.js";
 
-function App() {
-  const [count, setCount] = useState(0)
+const enlaceNavegacion = ({ isActive }) =>
+  isActive ? { fontWeight: "700" } : undefined;
 
+function Layout() {
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div>
+      <header>
+        <nav aria-label="Navegación principal">
+          <Link to="/">
+            <strong>Portal de Cursos</strong>
+          </Link>{" "}
+          <NavLink to="/" end style={enlaceNavegacion}>
+            Inicio
+          </NavLink>{" "}
+          <NavLink to="/cursos" style={enlaceNavegacion}>
+            Cursos
+          </NavLink>{" "}
+          <NavLink to="/matricula" style={enlaceNavegacion}>
+            Matrícula
+          </NavLink>{" "}
+          <NavLink to="/contacto" style={enlaceNavegacion}>
+            Contacto
+          </NavLink>
+        </nav>
+      </header>
 
-      <div className="ticks"></div>
+      <main>
+        <Outlet />
+      </main>
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+      <footer>
+        <small>Portal de Cursos</small>
+      </footer>
+    </div>
+  );
 }
 
-export default App
+function Inicio() {
+  const navigate = useNavigate();
+
+  return (
+    <section>
+      <h1>Portal de Cursos</h1>
+      <p>Encuentra el curso técnico que necesitas y matricúlate en línea.</p>
+      <button type="button" onClick={() => navigate("/cursos")}>
+        Ver cursos
+      </button>
+    </section>
+  );
+}
+
+function Cursos() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const consulta = searchParams.get("q") ?? "";
+  const cursosFiltrados = cursos.filter((curso) => {
+    const texto = `${curso.nombre} ${curso.area} ${curso.descripcion}`.toLowerCase();
+    return texto.includes(consulta.toLowerCase());
+  });
+
+  const buscar = (event) => {
+    event.preventDefault();
+    const datos = new FormData(event.currentTarget);
+    const texto = datos.get("q").trim();
+    setSearchParams(texto ? { q: texto } : {});
+  };
+
+  return (
+    <section>
+      <h1>Catálogo de cursos</h1>
+
+      <form onSubmit={buscar}>
+        <label htmlFor="buscar-curso">Buscar curso</label>{" "}
+        <input
+          id="buscar-curso"
+          name="q"
+          type="search"
+          defaultValue={consulta}
+        />{" "}
+        <button type="submit">Buscar</button>
+      </form>
+
+      <ul>
+        {cursosFiltrados.map((curso) => (
+          <li key={curso.id}>
+            <Link to={`/cursos/${curso.id}`}>{curso.nombre}</Link>
+            <span> - {curso.area}</span>
+          </li>
+        ))}
+      </ul>
+
+      {cursosFiltrados.length === 0 && <p>No encontramos cursos.</p>}
+    </section>
+  );
+}
+
+function CursoDetalle() {
+  const { id } = useParams();
+  const curso = cursos.find((item) => item.id === id);
+
+  if (!curso) {
+    return (
+      <section>
+        <h1>Curso no encontrado</h1>
+        <Link to="/cursos">Volver al catálogo</Link>
+      </section>
+    );
+  }
+
+  return (
+    <article>
+      <h1>{curso.nombre}</h1>
+      <p>{curso.descripcion}</p>
+      <p>
+        <strong>Área:</strong> {curso.area}
+      </p>
+      <p>
+        <strong>Horas:</strong> {curso.horas}
+      </p>
+      <p>
+        <strong>Modalidad:</strong> {curso.modalidad}
+      </p>
+      <h2>Temario</h2>
+      <ul>
+        {curso.temario.map((tema) => (
+          <li key={tema}>{tema}</li>
+        ))}
+      </ul>
+      <Link to={`/matricula?curso=${curso.id}`}>Matricularme</Link>
+    </article>
+  );
+}
+
+function Matricula() {
+  const [searchParams] = useSearchParams();
+  const cursoSeleccionado = cursos.find(
+    (curso) => curso.id === searchParams.get("curso"),
+  );
+
+  return (
+    <section>
+      <h1>Formulario de matrícula</h1>
+      <p>La validación con Formik y Yup se implementará en la siguiente fase.</p>
+      {cursoSeleccionado && <p>Curso seleccionado: {cursoSeleccionado.nombre}</p>}
+    </section>
+  );
+}
+
+function MatriculaExito() {
+  const location = useLocation();
+
+  if (!location.state) {
+    return <Navigate to="/matricula" replace />;
+  }
+
+  return (
+    <section>
+      <h1>Matrícula enviada</h1>
+      <p>Tu solicitud de matrícula fue registrada correctamente.</p>
+      <Link to="/cursos">Volver al catálogo</Link>
+    </section>
+  );
+}
+
+function Contacto() {
+  return (
+    <section>
+      <h1>Contacto</h1>
+      <p>El formulario de contacto se implementará en la siguiente fase.</p>
+    </section>
+  );
+}
+
+function NoEncontrada() {
+  const location = useLocation();
+
+  return (
+    <section>
+      <h1>Página no encontrada</h1>
+      <p>La ruta {location.pathname} no existe.</p>
+      <Link to="/">Volver al inicio</Link>
+    </section>
+  );
+}
+
+function App() {
+  return (
+    <Routes>
+      <Route element={<Layout />}>
+        <Route index element={<Inicio />} />
+        <Route path="cursos" element={<Cursos />} />
+        <Route path="cursos/:id" element={<CursoDetalle />} />
+        <Route path="matricula" element={<Matricula />} />
+        <Route path="matricula/exito" element={<MatriculaExito />} />
+        <Route path="contacto" element={<Contacto />} />
+        <Route path="*" element={<NoEncontrada />} />
+      </Route>
+    </Routes>
+  );
+}
+
+export default App;
