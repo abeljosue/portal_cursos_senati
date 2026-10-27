@@ -85,4 +85,5 @@ const cursos = [
   },
 ];
 
+export { cursos };
 export default cursos;
