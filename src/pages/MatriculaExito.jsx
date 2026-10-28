@@ -9,23 +9,36 @@ export default function MatriculaExito() {
   if (!valores) return <Navigate to="/matricula" replace />;
 
   const curso = cursos.find((item) => item.id === valores.curso);
+  const fechaRegistro = new Date(valores.fechaRegistro);
+  const fechaFormateada = new Intl.DateTimeFormat("es-PE", {
+    dateStyle: "long",
+    timeStyle: "short",
+  }).format(fechaRegistro);
 
   return (
     <section className="formulario-pagina matricula-exito-pagina">
       <div className="tarjeta formulario matricula-exito">
         <div className="encabezado-pagina exito-encabezado">
           <div className="exito-icono" aria-hidden="true">✓</div>
-          <span className="sobrelinea">Matrícula confirmada</span>
-          <h1>¡Gracias, {valores.nombre}!</h1>
-          <p>Hemos recibido tus datos correctamente para el proceso de matrícula.</p>
+          <span className="sobrelinea">Registro completado</span>
+          <h1>¡Matrícula registrada correctamente!</h1>
+          <p>Hemos recibido tus datos para el proceso de matrícula.</p>
         </div>
 
         <div className="resumen-matricula">
-          <h2 className="resumen-titulo">Resumen de tu registro</h2>
+          <h2 className="resumen-titulo">Detalle de matrícula</h2>
 
           <div className="resumen-datos">
             <div className="resumen-fila">
-              <strong>Postulante:</strong>
+              <strong>Código de registro:</strong>
+              <span>{valores.codigoRegistro}</span>
+            </div>
+            <div className="resumen-fila">
+              <strong>Estado:</strong>
+              <span><span className="estado-matricula">Registrada</span></span>
+            </div>
+            <div className="resumen-fila">
+              <strong>Estudiante:</strong>
               <span>{valores.nombre}</span>
             </div>
             <div className="resumen-fila">
@@ -41,25 +54,33 @@ export default function MatriculaExito() {
               <span>{valores.telefono}</span>
             </div>
             <div className="resumen-fila">
-              <strong>Curso seleccionado:</strong>
+              <strong>Curso:</strong>
               <span>{curso?.nombre || valores.curso}</span>
             </div>
             <div className="resumen-fila">
-              <strong>Turno elegido:</strong>
+              <strong>Turno:</strong>
               <span>{valores.turno}</span>
+            </div>
+            <div className="resumen-fila">
+              <strong>Fecha de registro:</strong>
+              <span>{fechaFormateada}</span>
             </div>
           </div>
         </div>
 
         <p className="nota-formulario exito-nota">
-          Enviaremos toda la información detallada a <strong>{valores.email}</strong>.
+          Comprobante de registro
         </p>
 
         <div className="exito-acciones">
+          <button
+            className="boton boton-principal"
+            type="button"
+            onClick={() => window.print()}
+          >
+            Descargar constancia PDF
+          </button>
           <Link className="boton boton-principal" to="/cursos">
-            Volver a Cursos
-          </Link>
-          <Link className="boton boton-secundario" to="/">
             Ir al Inicio
           </Link>
         </div>
