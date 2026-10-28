@@ -1,3 +1,4 @@
+import "./MatriculaExito.css";
 import { Link, Navigate, useLocation } from "react-router";
 import cursos from "../data/cursos.js";
 
@@ -10,57 +11,55 @@ export default function MatriculaExito() {
   const curso = cursos.find((item) => item.id === valores.curso);
 
   return (
-    <section className="formulario-pagina">
-      <div className="tarjeta formulario">
-        <div className="encabezado-pagina" style={{ textAlign: "center", marginBottom: "1.5rem" }}>
-          <div style={{ fontSize: "2rem", color: "#16a34a" }}>✓</div>
+    <section className="formulario-pagina matricula-exito-pagina">
+      <div className="tarjeta formulario matricula-exito">
+        <div className="encabezado-pagina exito-encabezado">
+          <div className="exito-icono" aria-hidden="true">✓</div>
           <span className="sobrelinea">Matrícula confirmada</span>
           <h1>¡Gracias, {valores.nombre}!</h1>
           <p>Hemos recibido tus datos correctamente para el proceso de matrícula.</p>
         </div>
 
-        <div style={{ background: "#ffffff", padding: "1.25rem", borderRadius: "8px", marginBottom: "1.5rem", border: "1px solid var(--border)" }}>
-          <h2 style={{ fontSize: "1.1rem", fontWeight: "bold", marginBottom: "1rem", borderBottom: "1px solid var(--border)", paddingBottom: "0.5rem", textAlign: "left" }}>
-            Resumen de tu registro
-          </h2>
+        <div className="resumen-matricula">
+          <h2 className="resumen-titulo">Resumen de tu registro</h2>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: "0.75rem", fontSize: "0.95rem" }}>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+          <div className="resumen-datos">
+            <div className="resumen-fila">
               <strong>Postulante:</strong>
               <span>{valores.nombre}</span>
             </div>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div className="resumen-fila">
               <strong>DNI:</strong>
               <span>{valores.dni}</span>
             </div>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div className="resumen-fila">
               <strong>Correo:</strong>
               <span>{valores.email}</span>
             </div>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div className="resumen-fila">
               <strong>Celular:</strong>
               <span>{valores.telefono}</span>
             </div>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div className="resumen-fila">
               <strong>Curso seleccionado:</strong>
               <span>{curso?.nombre || valores.curso}</span>
             </div>
-            <div style={{ display: "flex", justifyContent: "space-between" }}>
+            <div className="resumen-fila">
               <strong>Turno elegido:</strong>
               <span>{valores.turno}</span>
             </div>
           </div>
         </div>
 
-        <p className="nota-formulario" style={{ textAlign: "center", marginBottom: "1.5rem" }}>
+        <p className="nota-formulario exito-nota">
           Enviaremos toda la información detallada a <strong>{valores.email}</strong>.
         </p>
 
-        <div style={{ display: "flex", gap: "1rem", justifyContent: "center" }}>
+        <div className="exito-acciones">
           <Link className="boton boton-principal" to="/cursos">
             Volver a Cursos
           </Link>
-          <Link className="boton" to="/" style={{ background: "var(--code-bg)", color: "var(--text-h)" }}>
+          <Link className="boton boton-secundario" to="/">
             Ir al Inicio
           </Link>
         </div>

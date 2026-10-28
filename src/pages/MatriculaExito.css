@@ -1,0 +1,150 @@
+.matricula-exito-pagina > .matricula-exito {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.matricula-exito .exito-encabezado {
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.matricula-exito .exito-icono {
+  display: grid;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 16px;
+  border-radius: 50%;
+  background: #dcfce7;
+  color: #16a34a;
+  font-size: 2rem;
+  font-weight: 700;
+  place-items: center;
+}
+
+.matricula-exito .exito-encabezado h1 {
+  margin: 0 0 12px;
+  color: #211b55;
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: 800;
+  letter-spacing: -1.2px;
+}
+
+.matricula-exito .exito-encabezado p {
+  max-width: 590px;
+  margin: 0 auto;
+  color: #626b8e;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.matricula-exito .resumen-matricula {
+  margin-bottom: 24px;
+  padding: 24px;
+  border: 1px solid #e2e5f5;
+  border-radius: 12px;
+  background: #f9faff;
+}
+
+.matricula-exito .resumen-titulo {
+  margin: 0 0 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e2e5f5;
+  color: #211b55;
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-align: left;
+}
+
+.matricula-exito .resumen-datos {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  color: #252452;
+  font-size: 0.95rem;
+}
+
+.matricula-exito .resumen-fila {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.matricula-exito .resumen-fila strong {
+  color: #626b8e;
+}
+
+.matricula-exito .resumen-fila span {
+  text-align: right;
+  overflow-wrap: anywhere;
+}
+
+.matricula-exito .exito-nota {
+  margin: 0 0 24px;
+  color: #626b8e;
+  text-align: center;
+}
+
+.matricula-exito .exito-acciones {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 16px;
+}
+
+.matricula-exito .exito-acciones .boton {
+  box-sizing: border-box;
+  min-width: 160px;
+  padding: 14px 24px;
+}
+
+.matricula-exito .exito-acciones .boton-principal {
+  background: #5146e5;
+}
+
+.matricula-exito .exito-acciones .boton-principal:hover {
+  background: #3e35c5;
+}
+
+.matricula-exito .exito-acciones .boton-secundario {
+  border: 1px solid #d9def0;
+  background: #ffffff;
+  color: #252452;
+}
+
+.matricula-exito .exito-acciones .boton-secundario:hover {
+  background: #f1f5f9;
+}
+
+@media (max-width: 768px) {
+  .matricula-exito-pagina > .matricula-exito {
+    padding: 30px 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .matricula-exito-pagina > .matricula-exito {
+    padding: 26px 18px;
+  }
+
+  .matricula-exito .resumen-matricula {
+    padding: 18px 14px;
+  }
+
+  .matricula-exito .resumen-fila {
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .matricula-exito .resumen-fila span {
+    text-align: left;
+  }
+
+  .matricula-exito .exito-acciones {
+    flex-direction: column;
+  }
+
+  .matricula-exito .exito-acciones .boton {
+    width: 100%;
+  }
+}

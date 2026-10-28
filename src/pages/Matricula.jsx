@@ -1,4 +1,4 @@
-import "../index.css";
+import "./Matricula.css";
 import { useMemo } from "react";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { Link, useNavigate, useSearchParams } from "react-router";

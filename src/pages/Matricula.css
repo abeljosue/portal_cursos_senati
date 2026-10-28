@@ -1,0 +1,217 @@
+.formulario-pagina {
+  max-width: 950px;
+  margin: 40px auto 70px;
+  padding: 0 24px;
+}
+
+.formulario-pagina > .formulario {
+  padding: 40px;
+  border-color: #e2e5f5;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(39, 35, 106, 0.07);
+}
+
+.formulario .encabezado-pagina {
+  margin-bottom: 32px;
+  text-align: center;
+}
+
+.formulario .sobrelinea {
+  margin-bottom: 8px;
+  color: #4f46e5;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.formulario .encabezado-pagina h1 {
+  margin: 0 0 12px;
+  color: #211b55;
+  font-size: clamp(32px, 4vw, 44px);
+  font-weight: 800;
+  letter-spacing: -1.2px;
+}
+
+.formulario .encabezado-pagina p {
+  max-width: 590px;
+  margin: 0 auto;
+  color: #626b8e;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.formulario .campos-dos {
+  gap: 24px;
+  margin-top: 0;
+}
+
+.formulario .campo {
+  min-width: 0;
+  gap: 8px;
+}
+
+.formulario .campo label,
+.formulario .campo-turno > label {
+  color: #252452;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.formulario .campo input:not([type="checkbox"]):not([type="radio"]),
+.formulario .campo select {
+  width: 100%;
+  min-height: 50px;
+  padding: 15px 16px;
+  border-color: #d9def0;
+  border-radius: 10px;
+  background: #f9faff;
+  color: #252452;
+  font-size: 15px;
+  font-family: inherit;
+  transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.formulario .campo input:not([type="checkbox"]):not([type="radio"])::placeholder {
+  color: #9aa2b7;
+}
+
+.formulario .campo input:not([type="checkbox"]):not([type="radio"]):focus,
+.formulario .campo select:focus {
+  border-color: #5950ed;
+  outline: 3px solid rgba(89, 80, 237, 0.12);
+  background: #ffffff;
+  box-shadow: none;
+}
+
+.formulario .campo-turno {
+  min-width: 0;
+  gap: 8px;
+}
+
+.formulario .opciones-turno {
+  min-height: 50px;
+  gap: 20px;
+  padding: 12px 16px;
+  border-color: #d9def0;
+  border-radius: 10px;
+  background: #f9faff;
+}
+
+.formulario .opcion-radio {
+  gap: 6px;
+  color: #252452;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.formulario .opcion-radio input,
+.formulario .opcion-check input {
+  accent-color: #4f46e5;
+}
+
+.formulario .opcion-check input {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.formulario .opcion-check {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #626b8e;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.formulario .error {
+  display: block;
+  color: #db334f;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.formulario .boton-enviar {
+  min-height: 52px;
+  padding: 16px 24px;
+  margin-top: 24px;
+  border-radius: 10px;
+  background: #5146e5;
+  box-shadow: 0 6px 14px rgba(81, 70, 229, 0.18);
+  font-size: 16px;
+  font-weight: 700;
+  transition: background-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.formulario .boton-enviar:hover:not(:disabled) {
+  background: #3e35c5;
+  box-shadow: 0 10px 20px rgba(81, 70, 229, 0.25);
+  transform: translateY(-2px);
+  opacity: 1;
+}
+
+.formulario .boton-enviar:disabled {
+  cursor: wait;
+  opacity: 0.7;
+}
+
+.formulario .nota-formulario {
+  color: #626b8e;
+  font-size: 14px;
+}
+
+.formulario .nota-formulario a {
+  color: #5146e5;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.formulario .nota-formulario a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .formulario-pagina {
+    margin: 24px auto 44px;
+    padding: 0 16px;
+  }
+
+  .formulario-pagina > .formulario {
+    padding: 30px 24px;
+  }
+
+  .formulario .encabezado-pagina {
+    margin-bottom: 26px;
+  }
+
+  .formulario .encabezado-pagina h1 {
+    font-size: clamp(30px, 7vw, 36px);
+  }
+
+  .formulario .encabezado-pagina p {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .formulario-pagina > .formulario {
+    padding: 26px 18px;
+  }
+
+  .formulario .campos-dos {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .formulario .opciones-turno {
+    flex-wrap: wrap;
+    gap: 12px 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .formulario .campo input:not([type="checkbox"]):not([type="radio"]),
+  .formulario .campo select,
+  .formulario .boton-enviar {
+    transition: none;
+  }
+}
