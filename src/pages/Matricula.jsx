@@ -44,7 +44,19 @@ export default function Matricula() {
   );
 
   const handleSubmit = (valores) => {
-    navigate("/matricula/exito", { state: valores });
+    const fechaRegistro = new Date();
+    const codigoRegistro = `MAT-${fechaRegistro.getFullYear()}-${fechaRegistro
+      .getTime()
+      .toString()
+      .slice(-6)}`;
+
+    navigate("/matricula/exito", {
+      state: {
+        ...valores,
+        codigoRegistro,
+        fechaRegistro: fechaRegistro.toISOString(),
+      },
+    });
   };
 
   return (
