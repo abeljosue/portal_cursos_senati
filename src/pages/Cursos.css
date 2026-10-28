@@ -1,0 +1,421 @@
+
+.cursos-page {
+  --inicio-background: #eef2ff;
+  --inicio-ink: #1e1b4b;
+  --inicio-muted: #475569;
+  --inicio-primary: #4f46e5;
+  --inicio-primary-dark: #3730a3;
+  --inicio-accent: #ea580c;
+  --inicio-card: #ffffff;
+  --inicio-border: #c7d2fe;
+
+  box-sizing: border-box;
+  min-height: 100vh;
+  padding: 32px 24px 72px;
+  background: var(--inicio-background);
+  color: var(--inicio-ink);
+  font-family: "Segoe UI", Arial, sans-serif;
+}
+
+.cursos-page > h1 {
+  max-width: 1126px;
+  margin: 0 auto 14px;
+  color: var(--inicio-ink);
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+
+.cursos-page > p:first-of-type {
+  max-width: 1126px;
+  margin: 0 auto 30px;
+  color: var(--inicio-muted);
+  font-size: 1.08rem;
+  line-height: 1.65;
+}
+
+.cursos-page > form {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px 16px;
+  align-items: end;
+  max-width: 1126px;
+  margin: 0 auto 18px;
+  padding: 24px;
+  border: 1px solid var(--inicio-border);
+  border-radius: 20px;
+  background: var(--inicio-card);
+  box-shadow: 0 12px 24px rgb(30 27 75 / 7%);
+}
+
+.cursos-page > form label {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--inicio-ink);
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
+.cursos-page > form input {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  min-height: 48px;
+  padding: 0 15px;
+  border: 1px solid var(--inicio-border);
+  border-radius: 12px;
+  outline: none;
+  background: #fff;
+  color: var(--inicio-ink);
+  font: inherit;
+  font-size: 0.9rem;
+  transition: border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.cursos-page > form input::placeholder {
+  color: #64748b;
+}
+
+.cursos-page > form input:focus {
+  border-color: var(--inicio-primary);
+  box-shadow: 0 0 0 3px rgb(79 70 229 / 15%);
+}
+
+.cursos-page > form button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 20px;
+  border: none;
+  border-radius: 12px;
+  background: var(--inicio-primary);
+  box-shadow: 0 10px 20px rgb(79 70 229 / 22%);
+  color: #fff;
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    background-color 180ms ease;
+}
+
+.cursos-page > form button:hover {
+  transform: translateY(-2px);
+  background: var(--inicio-primary-dark);
+}
+
+.cursos-page > div {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 1126px;
+  margin: 0 auto 22px;
+  padding: 22px 24px;
+  border: 1px solid var(--inicio-border);
+  border-radius: 20px;
+  background: var(--inicio-card);
+  box-shadow: 0 12px 24px rgb(30 27 75 / 7%);
+}
+
+.cursos-page > div label {
+  color: var(--inicio-ink);
+  font-size: 0.88rem;
+  font-weight: 800;
+}
+
+.cursos-page > div select {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 460px;
+  min-height: 48px;
+  padding: 0 14px;
+  border: 1px solid var(--inicio-border);
+  border-radius: 12px;
+  outline: none;
+  background: #fff;
+  color: var(--inicio-ink);
+  font: inherit;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.cursos-page > div select:focus {
+  border-color: var(--inicio-primary);
+  box-shadow: 0 0 0 3px rgb(79 70 229 / 15%);
+}
+
+.cursos-page > p:not(:first-of-type) {
+  max-width: 1126px;
+  margin: 12px auto;
+  color: var(--inicio-muted);
+  font-size: 0.84rem;
+  line-height: 1.65;
+}
+
+.cursos-lista {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  align-items: stretch;
+  max-width: 1126px;
+  margin: 28px auto 0;
+}
+
+.cursos-lista .curso-card,
+.cursos-lista article {
+  box-sizing: border-box;
+  display: grid;
+  align-content: start;
+  gap: 16px;
+  min-width: 0;
+  padding: 22px;
+  border: 1px solid var(--inicio-border);
+  border-radius: 20px;
+  background: var(--inicio-card);
+  box-shadow: 0 12px 24px rgb(30 27 75 / 7%);
+  transition:
+    transform 180ms ease,
+    box-shadow 180ms ease,
+    border-color 180ms ease;
+}
+
+.cursos-lista .curso-card:hover,
+.cursos-lista article:hover {
+  transform: translateY(-2px);
+  border-color: var(--inicio-border);
+  box-shadow: 0 12px 24px rgb(30 27 75 / 7%);
+}
+
+.cursos-lista .curso-card img,
+.cursos-lista article img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 12px;
+  object-fit: cover;
+}
+
+.cursos-lista .curso-card header p,
+.cursos-lista article header p {
+  margin: 0 0 8px;
+  color: var(--inicio-primary-dark);
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.cursos-lista .curso-card h2,
+.cursos-lista article h2 {
+  margin: 0;
+  color: var(--inicio-ink);
+  font-size: 1.35rem;
+  line-height: 1.2;
+}
+
+.cursos-lista .curso-card h2 a,
+.cursos-lista article h2 a {
+  color: var(--inicio-ink);
+  text-decoration: none;
+}
+
+.cursos-lista .curso-card h2 a:hover,
+.cursos-lista article h2 a:hover {
+  color: var(--inicio-primary-dark);
+}
+
+.cursos-lista .curso-card p,
+.cursos-lista article p {
+  margin: 0;
+  color: var(--inicio-muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.cursos-lista .curso-card dl,
+.cursos-lista article dl {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 0;
+}
+
+.cursos-lista .curso-card dl div,
+.cursos-lista article dl div {
+  display: grid;
+  gap: 3px;
+}
+
+.cursos-lista .curso-card dt,
+.cursos-lista article dt {
+  color: var(--inicio-muted);
+  font-size: 0.78rem;
+}
+
+.cursos-lista .curso-card dd,
+.cursos-lista article dd {
+  margin: 0;
+  color: var(--inicio-muted);
+  font-weight: 800;
+}
+
+.cursos-lista .curso-card > div:last-child,
+.cursos-lista article > div:last-child {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+}
+
+.cursos-lista .curso-card > div:last-child a,
+.cursos-lista article > div:last-child a {
+  color: var(--inicio-primary-dark);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.cursos-lista .curso-card > div:last-child a:hover,
+.cursos-lista article > div:last-child a:hover {
+  text-decoration: underline;
+}
+
+.cursos-lista .curso-card button,
+.cursos-lista article button {
+  justify-self: start;
+  min-height: 40px;
+  margin: 0;
+  padding: 0 14px;
+  border: 1px solid var(--inicio-border);
+  border-radius: 12px;
+  background: #fff;
+  color: var(--inicio-primary-dark);
+  font: inherit;
+  font-weight: 800;
+  cursor: pointer;
+  transition: background-color 180ms ease;
+}
+
+.cursos-lista .curso-card button:hover,
+.cursos-lista article button:hover {
+  background: #e0e7ff;
+}
+
+.cursos-page > p:last-child {
+  max-width: 1126px;
+  margin: 24px auto;
+  padding: 24px;
+  border: 1px dashed var(--inicio-border);
+  border-radius: 20px;
+  background: var(--inicio-card);
+  color: var(--inicio-muted);
+  line-height: 1.65;
+  text-align: center;
+}
+
+.cursos-page button:focus-visible,
+.cursos-page a:focus-visible {
+  outline: 3px solid var(--inicio-accent);
+  outline-offset: 4px;
+}
+
+@media (max-width: 820px) {
+  .cursos-page {
+    padding: 28px 20px 56px;
+  }
+
+  .cursos-lista {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .cursos-page {
+    padding: 16px 16px 48px;
+  }
+
+  .cursos-page > h1 {
+    font-size: clamp(2rem, 8vw, 2.8rem);
+  }
+
+  .cursos-page > form {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 18px;
+  }
+
+  .cursos-page > form label {
+    grid-column: auto;
+  }
+
+  .cursos-page > form button {
+    width: 100%;
+  }
+
+  .cursos-page > div {
+    padding: 18px;
+  }
+
+  .cursos-lista {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 18px;
+    margin-top: 22px;
+  }
+
+  .cursos-lista .curso-card,
+  .cursos-lista article {
+    padding: 22px;
+  }
+}
+
+.cursos-page > div:has(#area) {
+  display: inline-grid;
+  vertical-align: top;
+  width: calc(50% - 12px);
+  margin-right: 20px;
+  gap: 8px;
+  box-sizing: border-box;
+}
+
+.cursos-page > .filtro-horas {
+  display: inline-grid;
+  vertical-align: top;
+  width: calc(50% - 12px);
+  margin-top: 0;
+  gap: 8px;
+  box-sizing: border-box;
+}
+
+.cursos-page > div:has(#area) select,
+.cursos-page > .filtro-horas select {
+  width: 100%;
+  max-width: none;
+}
+
+@media (max-width: 560px) {
+  .cursos-page > div:has(#area),
+  .cursos-page > .filtro-horas {
+    width: 100%;
+    margin: 0 0 16px;
+  }
+}
+
+/* Mensaje cuando no hay cursos encontrados */
+.cursos-page > p:last-child {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1126px;
+  margin: 24px auto;
+  padding: 24px;
+  border: 1px dashed #c7d2fe;
+  border-radius: 20px;
+  background: #ffffff;
+  color: #475569;
+  font-size: 1rem;
+  line-height: 1.65;
+  text-align: center;
+  box-shadow: 0 12px 24px rgb(30 27 75 / 7%);
+}

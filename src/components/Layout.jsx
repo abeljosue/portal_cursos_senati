@@ -1,4 +1,5 @@
 import { Link, NavLink, Outlet } from "react-router";
+import "./Layout.css";
 
 const claseEnlace = ({ isActive }) =>
   isActive ? "enlace enlace-activo" : "enlace";
