@@ -22,12 +22,14 @@
   place-items: center;
 }
 
-.matricula-exito .exito-encabezado h1 {
-  margin: 0 0 12px;
+.matricula-exito-pagina .matricula-exito .exito-encabezado h1 {
+  max-width: 700px;
+  margin: 12px auto 16px;
   color: #211b55;
-  font-size: clamp(32px, 4vw, 44px);
+  font-size: clamp(30px, 3.8vw, 40px);
   font-weight: 800;
   letter-spacing: -1.2px;
+  line-height: 1.2;
 }
 
 .matricula-exito .exito-encabezado p {
@@ -79,6 +81,15 @@
   overflow-wrap: anywhere;
 }
 
+.matricula-exito .estado-matricula {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 999px;
+  background: #dcfce7;
+  color: #15803d;
+  font-weight: 700;
+}
+
 .matricula-exito .exito-nota {
   margin: 0 0 24px;
   color: #626b8e;
@@ -96,6 +107,8 @@
   box-sizing: border-box;
   min-width: 160px;
   padding: 14px 24px;
+  font: inherit;
+  font-weight: 700;
 }
 
 .matricula-exito .exito-acciones .boton-principal {
@@ -146,5 +159,53 @@
 
   .matricula-exito .exito-acciones .boton {
     width: 100%;
+  }
+}
+
+@page {
+  size: A4;
+  margin: 16mm;
+}
+
+@media print {
+  body,
+  #root,
+  .app-shell {
+    min-height: 0;
+    background: #ffffff;
+  }
+
+  #root {
+    width: auto;
+    max-width: none;
+    border: 0;
+  }
+
+  .app-shell {
+    display: block;
+  }
+
+  .app-header,
+  .app-footer,
+  .matricula-exito .exito-acciones,
+  .matricula-exito .exito-nota {
+    display: none !important;
+  }
+
+  .matricula-exito-pagina {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .matricula-exito-pagina > .matricula-exito {
+    max-width: none;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+  }
+
+  .matricula-exito .resumen-matricula {
+    background: #ffffff;
   }
 }
