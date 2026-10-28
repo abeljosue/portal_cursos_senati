@@ -1,7 +1,6 @@
 import { useState } from "react";
 import {
   Link,
-  Navigate,
   Route,
   Routes,
   useLocation,
@@ -12,6 +11,10 @@ import {
 import CursoCard from "./components/CursoCard.jsx";
 import Layout from "./components/Layout.jsx";
 import cursos from "./data/cursos.js";
+
+// Páginas de Matrícula importadas desde la carpeta pages
+import Matricula from "./pages/Matricula.jsx";
+import MatriculaExito from "./pages/MatriculaExito.jsx";
 
 function Inicio() {
   const navigate = useNavigate();
@@ -118,37 +121,6 @@ function CursoDetalle() {
       </ul>
       <Link to={`/matricula?curso=${curso.id}`}>Matricularme</Link>
     </article>
-  );
-}
-
-function Matricula() {
-  const [searchParams] = useSearchParams();
-  const cursoSeleccionado = cursos.find(
-    (curso) => curso.id === searchParams.get("curso"),
-  );
-
-  return (
-    <section>
-      <h1>Formulario de matrícula</h1>
-      <p>La validación con Formik y Yup se implementará en la siguiente fase.</p>
-      {cursoSeleccionado && <p>Curso seleccionado: {cursoSeleccionado.nombre}</p>}
-    </section>
-  );
-}
-
-function MatriculaExito() {
-  const location = useLocation();
-
-  if (!location.state) {
-    return <Navigate to="/matricula" replace />;
-  }
-
-  return (
-    <section>
-      <h1>Matrícula enviada</h1>
-      <p>Tu solicitud de matrícula fue registrada correctamente.</p>
-      <Link to="/cursos">Volver al catálogo</Link>
-    </section>
   );
 }
 

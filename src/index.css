@@ -109,3 +109,142 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+/* matricula */
+
+.formulario-pagina {
+  max-width: 720px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+.tarjeta {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  box-shadow: var(--shadow);
+  text-align: left;
+}
+
+.sobrelinea {
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--accent);
+  font-weight: 600;
+  display: block;
+}
+
+.campos-dos {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.25rem;
+  margin-top: 1.5rem;
+}
+
+@media (min-width: 640px) {
+  .campos-dos {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  text-align: left;
+}
+
+.campo label {
+  color: var(--text-h);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+/* Inputs y Selects en blanco limpio */
+.campo input,
+.campo select {
+  padding: 0.75rem 1rem;
+  background: #ffffff;
+  color: var(--text-h);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 0.95rem;
+  outline: none;
+  font-family: inherit;
+  box-sizing: border-box;
+}
+
+.campo input:focus,
+.campo select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 2px var(--accent-bg);
+}
+
+/* Alineación limpia para la sección de Turno */
+.campo-turno {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  text-align: left;
+}
+
+.campo-turno label {
+  color: var(--text-h);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.opciones-turno {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0.75rem 1rem;
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  min-height: 48px;
+  box-sizing: border-box;
+}
+
+.opcion-radio {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  color: var(--text-h);
+  font-size: 0.95rem;
+}
+
+/* Botones y Errores */
+.error {
+  color: #db334f;
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
+}
+
+.boton {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  font-weight: 600;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  text-align: center;
+  transition: opacity 0.2s;
+}
+
+.boton:hover {
+  opacity: 0.9;
+}
+
+.boton-principal {
+  background-color: var(--accent);
+  color: #ffffff;
+}
+
+.boton-enviar {
+  width: 100%;
+  margin-top: 1.5rem;
+}
